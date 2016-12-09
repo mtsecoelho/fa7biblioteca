@@ -14,7 +14,7 @@ public class Receiver {
 	@Autowired
 	LivroRepository livros;
 
-    @JmsListener(destination = "mailbox", containerFactory = "myFactory")
+    @JmsListener(destination = "in-queue", containerFactory = "jmsListenerContainerFactory")
     public void receiveMessage(String message) {
         System.out.println("Nova mensagem recebida: " + message);
         String[] livrosPedido = message.split("-");
